@@ -9,3 +9,4 @@ deploy:
   provider: gae
   keyfile: third-wharf-229116-745ee18a738c.json
   project: third-wharf-229116
+  config: .app.yml
