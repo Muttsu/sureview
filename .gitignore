@@ -1,5 +1,5 @@
 third-wharf-229116-*.json
-wordvec.txt
+wordvec*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -26,18 +26,20 @@ def analyse( text ):
         key = lambda e: str.lower(e['name'])
     )
 
-if os.path.isfile('./wordvec.txt'):
-    with open('./wordvec.txt') as f:
-        raw = f.readlines()
+if os.path.isfile('./wordveccommon.txt'):
+    with open('./wordveccommon.txt') as f:
+        for line in f:
+            l = line.split()
+            wordvectors[" ".join(l[:-300])] = np. array([float(x) for x in l[-300:]])
 else:
     bucket = gcs.get_bucket('third-wharf-229116.appspot.com')
-    blob = storage.Blob('wordvec.txt', bucket)
+    blob = storage.Blob('wordveccommon.txt', bucket)
     raw = blob.download_as_string()
 
-for line in raw:
-    l = line.split()
-    wordvectors[l[0]] = np.array([float(x) for x in l[1:]])
+    for line in raw:
+        l = line.split()
+        wordvectors[l[0]] = np.array([float(x) for x in l[1:]])
 
 def related(a, b):
-    return cosine(wordvectors[a],wordvectors[b]) < 0.36
+    return cosine(wordvectors[a],wordvectors[b]) < 0.4
 
