@@ -109,7 +109,7 @@
                     <div class="container my-1">
                         <div class="row">
                             <div class="col text-center">
-                                <button type="button" class="btn btn-primary">Summerize</button>
+                                <button type="button" class="btn btn-primary">Summarise</button>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                     marker.setVisible(true);
 
                     infowindowContent.children['place-name'].textContent = place.name;
-                    infowindowContent.children['place-address'].textContent = place.formatted_address;
+                    infowindowContent.children['place-address'].textContent = place.vicinity;
                     infowindow.open(map, marker);
                 });
             }

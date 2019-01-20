@@ -7,4 +7,7 @@ def create_app():
     def hello():
         return "Hello World"
 
+    from src.api import bp as api
+    app.register_blueprint(api, url_prefix="/")
+
     return app
