@@ -9,10 +9,13 @@ print('done')
 
 bp = Blueprint("api", __name__)
 
-@bp.route("/summarise", method=["GET"])
+@bp.route("/summarise", methods=["GET"])
 def place():
     place_id = r.args.get('id')
-    return jsonify(maps.place(place_id, fields=["review"]))
+    result = maps.place(place_id, fields=["review"])
+    reviews = [r['text'] for r in result['result']['reviews']]
+    return jsonify(nn.analyse("\n".join(reviews)))
+
 
 
 
