@@ -28,7 +28,6 @@ def analyse( text ):
     entities = sorted([{"name": entity.name, "score": entity.sentiment.score*5/2+2.5}for entity in response.entities if entity.sentiment.magnitude != 0],
         key = lambda e: str.lower(e['name'])
     )
-    print(entities)
     rcost = [e['score'] for e in entities if related(e['name'],key_cost)]
     rfood = [e['score'] for e in entities if related(e['name'],key_food)]
     rservice = [e['score'] for e in entities if related(e['name'],key_service)]
