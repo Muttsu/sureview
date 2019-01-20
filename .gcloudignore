@@ -16,7 +16,12 @@
 # Python pycache:
 __pycache__/
 env/
+.venv/
+.env/
+venv/
 # Ignored by the build system
 /setup.cfg
 
 third-wharf-229116-*.json
+wordveccommon.txt
+.vscode/
